@@ -2,16 +2,52 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenLocal()
-        google()
+        maven { url 'https://jitpack.io' }
+        maven {
+            name 'aliyun'
+//            url 'https://maven.aliyun.com/repository/central'
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            name 'aliyun-google'
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            name 'aliyun-gradle-plugin'
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+        }
+        maven {
+            name 'aliyun-grails-core'
+            url 'https://maven.aliyun.com/repository/grails-core'
+        }
         mavenCentral()
+        google()
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenLocal()
-        google()
+        maven { url 'https://jitpack.io' }
+        maven {
+            name 'aliyun'
+//            url 'https://maven.aliyun.com/repository/central'
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            name 'aliyun-google'
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            name 'aliyun-gradle-plugin'
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+        }
+        maven {
+            name 'aliyun-grails-core'
+            url 'https://maven.aliyun.com/repository/grails-core'
+        }
         mavenCentral()
+        google()
     }
 }
 rootProject.name = "serial-port"
