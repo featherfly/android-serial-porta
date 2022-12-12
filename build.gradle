@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'https://jitpack.io' }
+        maven {
+            name 'aliyun'
+            url "https://maven.aliyun.com/repository/public"
+        }
+        maven {
+            name 'aliyun-google'
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            name 'paho-releases'
+            url "https://repo.eclipse.org/content/repositories/paho-releases/"
+        }
+        google()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'com.android.library' version '7.3.0' apply false
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+allprojects {
+    ext {
+        $compileSdk = 32
+        $minSdk = 24
+        $targetSdk = 32
+        $versionCode = 1
+        $versionName = "0.1.0"
+    }
+}
