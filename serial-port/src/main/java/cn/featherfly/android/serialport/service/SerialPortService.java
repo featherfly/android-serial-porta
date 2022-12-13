@@ -29,12 +29,9 @@ public class SerialPortService extends LocalBinderService {
 
     private ScheduledExecutorService executorService;
 
-    private static Map<String, EasySerialPort> serialPortMap = new HashMap<>(0);
+    private final Map<String, EasySerialPort> serialPortMap = new HashMap<>(0);
 
-    /**
-     * The Service connection.
-     */
-    ServiceConnection serviceConnection;
+    private final Map<Context, ServiceConnection> serviceConnectionMap = new HashMap<>(0);
 
     /**
      * bind serial port service.
@@ -56,7 +53,7 @@ public class SerialPortService extends LocalBinderService {
                 SerialPortService.LocalBinder binder = (SerialPortService.LocalBinder) service;
                 // 获取服务对象
                 SerialPortService serialPortService = binder.getService();
-                serialPortService.serviceConnection = this;
+                serialPortService.serviceConnectionMap.put(context, this);
 
                 connected.accept(serialPortService, name);
             }
@@ -104,7 +101,11 @@ public class SerialPortService extends LocalBinderService {
      * @param context the context
      */
     public void unbind(Context context) {
-        context.unbindService(serviceConnection);
+        ServiceConnection sn = serviceConnectionMap.get(context);
+        if (sn != null) {
+            context.unbindService(sn);
+            serviceConnectionMap.remove(context);
+        }
     }
 
     /**
@@ -170,7 +171,14 @@ public class SerialPortService extends LocalBinderService {
     }
 
     @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
+        serviceConnectionMap.clear();
+        serialPortMap.clear();
     }
 }
