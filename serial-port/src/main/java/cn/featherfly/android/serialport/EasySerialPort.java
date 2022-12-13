@@ -4,7 +4,6 @@ import java.io.IOException;
 
 /**
  * The interface EasySerialPort.
- *
  */
 public interface EasySerialPort {
 
@@ -12,9 +11,10 @@ public interface EasySerialPort {
      * Open port.
      *
      * @return this port
-     * @throws IOException the io exception
+     * @throws SecurityException the security exception
+     * @throws IOException       the io exception
      */
-    EasySerialPort open() throws IOException;
+    EasySerialPort open() throws SecurityException, IOException;
 
     /**
      * Close port.
@@ -71,6 +71,12 @@ public interface EasySerialPort {
      */
     public void flush() throws IOException;
 
+    /**
+     * Add listener easy serial port.
+     *
+     * @param serialReadListener the serial read listener
+     * @return the easy serial port
+     */
     public EasySerialPort addListener(SerialReadListener serialReadListener);
 
 
@@ -78,6 +84,9 @@ public interface EasySerialPort {
     // ------------------------------------------------------------------------------------------------------
     // ------------------------------------------------------------------------------------------------------
 
+    /**
+     * The interface Serial read listener.
+     */
     public interface SerialReadListener {
         /**
          * 读取完成
@@ -106,6 +115,9 @@ public interface EasySerialPort {
 //        }
     }
 
+    /**
+     * The type Serial port event.
+     */
     public class SerialPortEvent {
 
         private String port;
@@ -129,6 +141,9 @@ public interface EasySerialPort {
         }
     }
 
+    /**
+     * The type Serial port read event.
+     */
     public class SerialPortReadEvent extends SerialPortEvent {
 
         private int[] buffer;

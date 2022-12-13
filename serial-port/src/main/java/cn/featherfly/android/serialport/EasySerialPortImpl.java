@@ -124,13 +124,8 @@ public class EasySerialPortImpl implements EasySerialPort {
         return connected;
     }
 
-    /**
-     * open easy serial port.
-     *
-     * @return the easy serial port
-     * @throws IOException the io exception
-     */
-    public EasySerialPortImpl open() throws IOException {
+    @Override
+    public EasySerialPortImpl open() throws SecurityException, IOException {
         Log.i(tag, "open");
         serialPort = new SerialPort(new File(descriptor.getName()), descriptor.getBaudrate(), descriptor.getFlags());
         in = serialPort.getInputStream();
