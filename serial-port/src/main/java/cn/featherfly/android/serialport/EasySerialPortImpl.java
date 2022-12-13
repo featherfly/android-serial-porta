@@ -184,6 +184,8 @@ public class EasySerialPortImpl implements EasySerialPort {
         closeInput();
         closeOutput();
         serialPort.close();
+        serialPort = null;
+        connected = false;
         return this;
     }
 
