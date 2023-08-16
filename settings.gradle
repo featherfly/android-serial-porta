@@ -1,13 +1,11 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         mavenLocal()
-        maven { url 'https://jitpack.io' }
-        maven {
-            name 'aliyun'
-//            url 'https://maven.aliyun.com/repository/central'
-            url 'https://maven.aliyun.com/repository/public'
-        }
+//        maven {
+//            name 'aliyun'
+////            url 'https://maven.aliyun.com/repository/central'
+//            url 'https://maven.aliyun.com/repository/public'
+//        }
         maven {
             name 'aliyun-google'
             url 'https://maven.aliyun.com/repository/google'
@@ -16,10 +14,12 @@ pluginManagement {
             name 'aliyun-gradle-plugin'
             url 'https://maven.aliyun.com/repository/gradle-plugin'
         }
-        maven {
-            name 'aliyun-grails-core'
-            url 'https://maven.aliyun.com/repository/grails-core'
-        }
+//        maven {
+//            name 'aliyun-grails-core'
+//            url 'https://maven.aliyun.com/repository/grails-core'
+//        }
+//        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
         mavenCentral()
         google()
     }
@@ -28,7 +28,6 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenLocal()
-        maven { url 'https://jitpack.io' }
         maven {
             name 'aliyun'
 //            url 'https://maven.aliyun.com/repository/central'
@@ -46,6 +45,7 @@ dependencyResolutionManagement {
             name 'aliyun-grails-core'
             url 'https://maven.aliyun.com/repository/grails-core'
         }
+        maven { url 'https://jitpack.io' }
         mavenCentral()
         google()
     }

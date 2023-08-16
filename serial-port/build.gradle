@@ -1,6 +1,7 @@
 apply from: rootDir.getAbsolutePath() + '/android_maven_publish.gradle'
 
 android {
+    namespace 'cn.featherfly.android.serialport'
     defaultConfig {
 //        applicationId "cn.featherfly.android.serialport"
 //        minSdk $minSdk
@@ -37,14 +38,16 @@ android {
     }
 }
 
-afterEvaluate {
-    javadoc.classpath += files(android.libraryVariants.collect { variant ->
-        variant.javaCompileProvider.get().classpath.files
-    })
-}
+//afterEvaluate {
+//    javadoc.classpath += files(android.libraryVariants.collect { variant ->
+//        variant.javaCompileProvider.get().classpath.files
+//    })
+//}
 
 dependencies {
-    api 'cn.featherfly.common:common-android:0.1.2'
+    api 'cn.featherfly.common:common-android:0.1.2@aar'
+//    api group: 'cn.featherfly.common', name: 'common-android', version: '0.1.2', ext: 'aar'
+
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
